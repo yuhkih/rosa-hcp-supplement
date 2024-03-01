@@ -1,8 +1,7 @@
-# 1. AWS network の SubnetId を確認する
+# AWS network の SubnetId を確認する
 
-ここでは、何らかの方法で AWS上に ROSA インストール用の Subnet を作成した状態だとします。
 
-1-1. AWS の Subnet id を取得します。
+AWS の Subnet id を取得します。
 
 ```
 aws ec2 describe-subnets | jq -r '.Subnets[] | [ .CidrBlock, .SubnetId, .AvailabilityZone, .Tags[].Value ] | @csv'
@@ -20,43 +19,10 @@ $
 この例では ROSA Public Cluster 用に `subnet-07098183112673e5e` (Pulbic Subnet) と `subnet-06cf09e21d4ab1e8f` (Private Sunbet) を作成しています。
 
 
-# 2. ManagedOpenShift-Installer-Role IAM Role の ARN を確認する。 
+# ManagedOpenShift-Installer-Role IAM Role の ARN を確認する。 
 
-2-1. STS インストールを前提としています。インストール用の ROSA の IAM Role を作成します。(既に作成してある場合は必要ありません）
 
-```
-rosa create account-roles
-```
-
-**コマンド実行例:**
-
-```
-$ rosa create account-roles
-I: Logged in as 'yuhkih' on 'https://api.openshift.com'
-I: Validating AWS credentials...
-I: AWS credentials are valid!
-I: Validating AWS quota...
-I: AWS quota ok. If cluster installation fails, validate actual AWS resource usage against https://docs.openshift.com/rosa/rosa_getting_started/rosa-required-aws-service-quotas.html
-I: Verifying whether OpenShift command-line tool is available...
-I: Current OpenShift Client Version: 4.14.2
-I: Creating account roles
-? Role prefix: ManagedOpenShift
-? Permissions boundary ARN (optional): 
-? Path (optional): 
-? Role creation mode: auto
-? Create Classic account roles: Yes
-? Create Hosted CP account roles: No
-I: Creating classic account roles using 'arn:aws:iam::864046375925:user/yhanada@redhat.com-x9bhx-admin'
-I: Created role 'ManagedOpenShift-Installer-Role' with ARN 'arn:aws:iam::864046375925:role/ManagedOpenShift-Installer-Role'
-I: Created role 'ManagedOpenShift-ControlPlane-Role' with ARN 'arn:aws:iam::864046375925:role/ManagedOpenShift-ControlPlane-Role'
-I: Created role 'ManagedOpenShift-Worker-Role' with ARN 'arn:aws:iam::864046375925:role/ManagedOpenShift-Worker-Role'
-I: Created role 'ManagedOpenShift-Support-Role' with ARN 'arn:aws:iam::864046375925:role/ManagedOpenShift-Support-Role'
-I: To create an OIDC Config, run the following command:
-        rosa create oidc-config
-$ 
-```
-
-2-2. 作成された IAM Role を確認します。
+作成された IAM Role は以下の方法で確認できます。
 
 ```
 rosa list account-roles
@@ -76,14 +42,14 @@ ManagedOpenShift-Worker-Role        Worker         arn:aws:iam::864046375925:rol
 $ 
 ```
 
-# 3. 作成した ROSA 用の Network を検証する
+# 作成した ROSA 用の Network を検証する
 
-3-1. ネットワークの検証を行います。検証したい `subnet id` と、`ManagedOpenShift-Installer-Role` IAM Role の arn が必要になります。
+ネットワークの検証を行います。検証したい `subnet id` と、`ManagedOpenShift-Installer-Role` IAM Role の arn が必要になります。
 
 必要な情報を環境変数にセットします。Subnetが複数ある場合は、カンマで区切って並べます。
 
 ```
-export REGION=us-east-2
+export REGION=ap-northeast-1
 export SUBNET_IDS=subnet-07098183112673e5e,subnet-06cf09e21d4ab1e8f
 export INSTALL_IAM_ROLE_ARN=arn:aws:iam::864046375925:role/ManagedOpenShift-Installer-Role
 ```
