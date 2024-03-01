@@ -95,16 +95,16 @@ Cluster の作成を開始します。いろいろ聞かれますが、全てデ
 rosa create cluster --cluster-name=$CLUSTER_NAME --sts --hosted-cp  --region=$REGION --subnet-ids=$SUBNET_IDS
 ```
 
-Cluster の作成を開始した後に Operator Role を作成します。いろいろ聞かれますが、デフォルトで大丈夫です。
+Cluster の作成を開始した後に Operator Role を作成します。
 
 ```
-rosa create operator-roles --cluster $CLUSTER_NAME
+rosa create operator-roles --cluster $CLUSTER_NAME -m auto --yes
 ```
 
-OIDC Provider を作成します。いろいろ聞かれますが、デフォルトで大丈夫です。
+OIDC Provider を作成します。
 
 ```
-rosa create oidc-provider --cluster  $CLUSTER_NAME
+rosa create oidc-provider --cluster  $CLUSTER_NAME -m auto --yes
 ```
 
 ROSA のクラスターができるまで以下のコマンドでモニターします。大体 10分ほどかかるはずです。
