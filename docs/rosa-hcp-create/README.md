@@ -3,10 +3,12 @@
 HCP ROSA は、ユーザーが既にもっているネットワークにデプロイする事が前提になります。
 ここでは Terraform を使用して AWS　上に Network を作成します。
 
-ここの手順は、ドキュメントの「<a href="https://docs.openshift.com/rosa/rosa_hcp/rosa-hcp-sts-creating-a-cluster-quickly.html#rosa-hcp-creating-vpc" target="_blank">Creating a Vritual Private Cloud for your ROSA with HCP clusters</a>
+この手順は、公式ドキュメントの「<a href="https://docs.openshift.com/rosa/rosa_hcp/rosa-hcp-sts-creating-a-cluster-quickly.html#rosa-hcp-creating-vpc" target="_blank">Creating a Vritual Private Cloud for your ROSA with HCP clusters</a>
 」をベースにしています。
 
-## terraform を使用した VPC, Subnet,  NAT Gateway 等の必要な Network リソースの作成
+## terraform を使用した AWS Network リソースの作成
+
+サンプルで提供されている terraform のテンプレートを使って、AWS の VPC、Subnet、NAT Gateway 等の必要なリソースを作成します。
 
 ```
 git clone https://github.com/openshift-cs/terraform-vpc-example
