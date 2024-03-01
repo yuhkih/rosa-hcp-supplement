@@ -110,7 +110,7 @@ rosa create oidc-provider --cluster  $CLUSTER_NAME -m auto --yes
 ROSA のクラスターができるまで以下のコマンドでモニターします。大体 10分ほどかかるはずです。
 
 ```
-rosa logs install -c my-hpc-cluster --watch
+rosa logs install -c $CLUSTER_NAME --watch
 ```
 
 
