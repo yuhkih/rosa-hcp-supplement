@@ -6,7 +6,7 @@ ROSA 周りの補則ドキュメント
 
 ### コンテンツ
 
-1. [ROSA を 有効化する](docs/rosa-hcp-prepare)
+1. [ROSA を 有効化する](docs/rosa-hcp-enable)
 1. [必要な CLI をインストールする](docs/rosa-hcp-prepare)
 1. [ROSA Cluster を作成する](docs/rosa-hcp-create)
 1. [ROSA Cluster を削除する](docs/rosa-hcp-delete-cluster)
