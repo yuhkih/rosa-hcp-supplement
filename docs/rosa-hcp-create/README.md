@@ -29,7 +29,7 @@ export CLUSTER_NAME=myhcpcluster
 export REGION=ap-northeast-1
 ```
 
-Terraform の plan を作成します。以下は Multi AZ 環境の Network を作成します。
+Terraform の plan を作成します。以下は Worker Node 用に Multi AZ 環境の Network を作成します。
 
 ```
 terraform plan -out rosa.tfplan -var region=$REGION -var cluster_name=$CLUSTER_NAME -var single_az_only=false
