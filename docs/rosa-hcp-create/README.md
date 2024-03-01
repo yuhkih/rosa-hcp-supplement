@@ -75,7 +75,7 @@ rosa login
 ```
 
 
-必要な IAM Role を作成します。いろいろ聞かれますが、デフォルトで大丈夫です。
+必要な IAM Role を作成します。いろいろ聞かれますが、全てデフォルトで大丈夫です。
 
 ```
 rosa create account-roles --hosted-cp
@@ -89,7 +89,7 @@ echo $REGION
 echo $SUBNET_IDS
 ```
 
-Cluster の作成を開始します。いろいろ聞かれますが、デフォルトで大丈夫です。
+Cluster の作成を開始します。いろいろ聞かれますが、全てデフォルトで大丈夫です。
 
 ```
 rosa create cluster --cluster-name=$CLUSTER_NAME --sts --hosted-cp  --region=$REGION --subnet-ids=$SUBNET_IDS
