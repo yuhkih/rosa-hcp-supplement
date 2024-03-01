@@ -54,7 +54,7 @@ export SUBNET_IDS=subnet-07098183112673e5e,subnet-06cf09e21d4ab1e8f
 export INSTALL_IAM_ROLE_ARN=arn:aws:iam::864046375925:role/ManagedOpenShift-Installer-Role
 ```
 
-以下のコマンドを実行します。
+以下のコマンドを実行する事で ROSA の稼働に必要な疎通が取れているか確認できます。
 
 ```
 rosa verify network --watch --region $REGION --subnet-ids $SUBNET_IDS  --role-arn $INSTALL_IAM_ROLE_ARN
