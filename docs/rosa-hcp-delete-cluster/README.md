@@ -57,15 +57,17 @@ rosa logs uninstall -c $CLUSTER_NAME --watch
 クラスターの削除が完了したら、Operator 用の IAM Role と OIDC Provider を削除します。
 
 Operator 用 IAM Role を削除します。これは、`rosa delete cluster` コマンドを実行した時にログの最後に出てきたコマンドです。
+この時、最後に `-m auto --yes` を付け足すと非インタラクティブに削除してくれます。
 
 ```
-rosa delete operator-roles --prefix <IAM Role prefix>
+rosa delete operator-roles --prefix <IAM Role prefix> -m auto --yes
 ```
 
 OIDC Provider を削除します。これは、`rosa delete cluster` コマンドを実行した時にログの最後に出てきたコマンドです。
+この時、最後に `-m auto --yes` を付け足すと非インタラクティブに削除してくれます。
 
 ```
-rosa delete oidc-provider --oidc-config-id <OIDC provider config ID>
+rosa delete oidc-provider --oidc-config-id <OIDC provider config ID> -m auto --yes
 ```
 
 # 4.Terraform で作成した AWS のネットワークを削除する
